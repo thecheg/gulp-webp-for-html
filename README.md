@@ -1,5 +1,5 @@
 # gulp-webp-for-html
-Replaces <img /> with <picture /> for WebP
+Replaces `<img />` with `<picture />` for WebP
 ## Example
 ```html
 // Input

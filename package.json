@@ -1,0 +1,25 @@
+{
+	"name": "gulp-webp-for-html",
+	"version": "1.0.0",
+	"description": "replace <img /> with <picture /> for WebP",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"webp",
+		"html",
+		"picture",
+		"gulp",
+		"gulp-webp-html",
+		"gulp-webp-for-html"
+	],
+	"author": "Alexey Morozov",
+	"homepage": "https://github.com/thecheg/gulp-webp-for-html",
+	"license": "MIT",
+	"dependencies": {
+		"plugin-error": "^1.0.0",
+		"gulp-util": "^3.0.7",
+		"through2": "^4.0.2"
+	}
+}

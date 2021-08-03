@@ -1,6 +1,6 @@
 {
 	"name": "gulp-webp-for-html",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "replace <img /> with <picture /> for WebP",
 	"main": "index.js",
 	"scripts": {

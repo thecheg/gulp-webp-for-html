@@ -87,45 +87,46 @@ module.exports = function (extensions) {
 
 									case '.svg':
 									case '.SVG':
-										line = '<picture>'+
-												'<source srcset="' + newWebpUrl + '" type="image/webp">' +
-												'<source srcset="' + srcImage + '" type="image/svg+xml">' +
-												imgTag +
-											'</picture>'
+										line = `<picture>
+												<source srcset="${newWebpUrl}" type="image/webp">
+												<source srcset="${srcImage}" type="image/svg+xml">
+												${imgTag}
+											</picture>`;
 										break;
 
 									case '.avif':
 									case '.AVIF':
-										line = '<picture>'+
-												'<source srcset="' + srcImage + '" type="image/avif">' +
-												'<source srcset="' + newWebpUrl + '" type="image/webp">' +
-												imgTag +
-											'</picture>'
+										line = `<picture>
+												<source srcset="${newWebpUrl}" type="image/webp">
+												<source srcset="${srcImage}" type="image/avif">
+												${imgTag}
+											</picture>`;
 										break;
 
 									case '.gif':
 									case '.GIF':
-										line = '<picture>'+
-												'<source srcset="' + srcImage + '" media="(prefers-reduced-motion: reduce)">' +
-												imgTag +
-											'</picture>'
+										line = `<picture>
+												<source srcset="${newWebpUrl}" type="image/webp">
+												<source srcset="${srcImage}" media="(prefers-reduced-motion: reduce)">
+												${imgTag}
+											</picture>`;
 										break;
 
 									case '.tif':
 									case '.TIF':
-										line = '<picture>'+
-												'<source srcset="' + srcImage + '" type="image/tiff">' +
-												'<source srcset="' + newWebpUrl + '" type="image/webp">' +
-												imgTag +
-											'</picture>'
+										line = `<picture>
+												<source srcset="${newWebpUrl}" type="image/webp">
+												<source srcset="${srcImage}" type="image/tiff">
+												${imgTag}
+											</picture>`;
 										break;
 	
 									default:
-										line = '<picture>'+
-												'<source srcset="' + newWebpUrl + '" type="image/webp">' +
-												'<source srcset="' + srcImage + '" type="image/jpeg">' +
-												imgTag +
-											'</picture>'
+										line = `<picture>
+												<source srcset="${newWebpUrl}" type="image/webp">
+												<source srcset="${srcImage}" type="image/jpeg">
+												${imgTag}
+											</picture>`;
 								}
 							}
 						});

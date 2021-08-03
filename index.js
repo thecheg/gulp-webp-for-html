@@ -70,19 +70,19 @@ module.exports = function (extensions) {
 									case '.JPG':
 									case '.JPEG':
 										line = `<picture>
-											<source srcset="${newWebpUrl}" type="image/webp">
-											<source srcset="${srcImage}" type="image/jpeg">
-											${imgTag}
-										</picture>`;
+												<source srcset="${newWebpUrl}" type="image/webp">
+												<source srcset="${srcImage}" type="image/jpeg">
+												${imgTag}
+											</picture>`;
 										break;
 
 									case '.png':
 									case '.PNG':
 										line = `<picture>
-											<source srcset="${newWebpUrl}" type="image/webp">
-											<source srcset="${srcImage}" type="image/png">
-											${imgTag}
-										</picture>`;
+												<source srcset="${newWebpUrl}" type="image/webp">
+												<source srcset="${srcImage}" type="image/png">
+												${imgTag}
+											</picture>`;
 										break;
 
 									case '.svg':
@@ -128,7 +128,7 @@ module.exports = function (extensions) {
 											'</picture>'
 								}
 							}
-						}); 
+						});
 
 						return line
 					}

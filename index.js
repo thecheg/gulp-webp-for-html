@@ -16,7 +16,7 @@ const through = require('through2')
 
 module.exports = function (extensions) {
 	// support extensions in lower/upper case
-	var extensions = extensions || ['.jpg', '.png', '.gif', '.jpeg','.avif', '.svg', '.tif', '.JPG', '.PNG', '.GIF', '.JPEG', '.AVIG', '.SVG', '.TIF']
+	var extensions = extensions || ['.jpg', '.png', '.gif', '.jpeg','.avif', '.svg', '.tif', '.JPG', '.PNG', '.GIF', '.JPEG', '.AVIF', '.SVG', '.TIF']
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file)

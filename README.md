@@ -1,7 +1,5 @@
 # gulp-webp-for-html
-
 Replaces <img /> with <picture /> for WebP
-
 ## Example
 ```html
 // Input
@@ -14,12 +12,12 @@ Replaces <img /> with <picture /> for WebP
 	<img src="/images/image.jpg">
 </picture>
 ```
-
+### Supported extensions
+`.jpg`, `.jpeg`, `.png`, `.svg`, `.gif`, `.tif`, `.avif`, `.JPG`, `.JPEG`, `.PNG`, `.SVG`, `.GIF`, `.TIF`, `.AVIG`
 ## Install
 ```bash
 npm i gulp-webp-for-html --save-dev
 ```
-
 ## Usage
 ```javascript
 var webphtml = require('gulp-webp-for-html');
@@ -29,7 +27,6 @@ gulp.task('html',function(){
 		.pipe(gulp.dest('./public/'))
 });
 ```
-
 ### Options
 Pass extensions array as argument to specify files for WebP supporting:
 ```javascript

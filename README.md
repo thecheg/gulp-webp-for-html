@@ -13,7 +13,7 @@ Replaces `<img />` with `<picture />` for WebP
 </picture>
 ```
 ### Supported extensions
-`.jpg`, `.jpeg`, `.png`, `.svg`, `.gif`, `.tif`, `.avif`, `.JPG`, `.JPEG`, `.PNG`, `.SVG`, `.GIF`, `.TIF`, `.AVIG`
+`.jpg`, `.jpeg`, `.png`, `.svg`, `.gif`, `.tif`, `.avif`, `.JPG`, `.JPEG`, `.PNG`, `.SVG`, `.GIF`, `.TIF`, `.AVIF`
 ## Install
 ```bash
 npm i gulp-webp-for-html --save-dev

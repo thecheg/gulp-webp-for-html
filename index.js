@@ -16,7 +16,7 @@ const through = require('through2')
 
 module.exports = function (extensions) {
 	// support extensions in lower/upper case
-	var extensions = extensions || ['.jpg', '.png', '.gif', '.jpeg','.avif', '.svg', '.tif', '.JPG', '.PNG', '.GIF', '.JPEG', '.AVIF', '.SVG', '.TIF']
+	var extensions = extensions || ['.jpg', '.png', '.gif', '.jpeg','.avif', '.svg', '.tif', '.tiff', '.ico', '.JPG', '.PNG', '.GIF', '.JPEG', '.AVIF', '.SVG', '.TIF', '.TIFF', '.ICO'];
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file)
@@ -47,13 +47,12 @@ module.exports = function (extensions) {
 						var imgTag = regexpArray[0]     // orig image tag
 						var srcImage = regexpArray[2]   // src URL
 						var newWebpUrl = srcImage       // for new URL
+						var mime = '';
 
 						/* exit if in URL .webp */
 						if (srcImage.indexOf('.webp') + 1) return line
 
 						extensions.forEach(ext => {
-							// console.log( '---> SRC: ' + ext + ' ' + srcImage + ' ' + srcImage.indexOf(ext) )
-
 							if ( srcImage.indexOf(ext) == -1 ) {
 								// doesn't require replacement
 								return line;
@@ -63,71 +62,58 @@ module.exports = function (extensions) {
 								// console.log(newWebpUrl + ' <---REPLACE');
 								newWebpUrl = newWebpUrl.replace(ext, '.webp')
 
-								/* create output HTML with tag <picture> */
+								/* switch MIME types */
 								switch (ext) {
 									case '.jpg':
 									case '.jpeg':
 									case '.JPG':
 									case '.JPEG':
-										line = `<picture>
-												<source srcset="${newWebpUrl}" type="image/webp">
-												<source srcset="${srcImage}" type="image/jpeg">
-												${imgTag}
-											</picture>`;
+										mime = 'image/jpeg';
 										break;
 
 									case '.png':
 									case '.PNG':
-										line = `<picture>
-												<source srcset="${newWebpUrl}" type="image/webp">
-												<source srcset="${srcImage}" type="image/png">
-												${imgTag}
-											</picture>`;
+										mime = 'image/png';
 										break;
 
 									case '.svg':
 									case '.SVG':
-										line = `<picture>
-												<source srcset="${newWebpUrl}" type="image/webp">
-												<source srcset="${srcImage}" type="image/svg+xml">
-												${imgTag}
-											</picture>`;
+										mime = 'image/svg+xml';
 										break;
 
 									case '.avif':
 									case '.AVIF':
-										line = `<picture>
-												<source srcset="${newWebpUrl}" type="image/webp">
-												<source srcset="${srcImage}" type="image/avif">
-												${imgTag}
-											</picture>`;
+										mime = 'image/avif';
 										break;
 
 									case '.gif':
 									case '.GIF':
-										line = `<picture>
-												<source srcset="${newWebpUrl}" type="image/webp">
-												<source srcset="${srcImage}" media="(prefers-reduced-motion: reduce)">
-												${imgTag}
-											</picture>`;
+										mime = 'image/gif';
+										break;
+
+									case '.ico':
+									case '.ICO':
+										mime = 'image/vnd.microsoft.icon';
 										break;
 
 									case '.tif':
+									case '.tiff':
 									case '.TIF':
-										line = `<picture>
-												<source srcset="${newWebpUrl}" type="image/webp">
-												<source srcset="${srcImage}" type="image/tiff">
-												${imgTag}
-											</picture>`;
+									case '.TIFF':
+										mime = 'image/tiff';
 										break;
 	
 									default:
-										line = `<picture>
-												<source srcset="${newWebpUrl}" type="image/webp">
-												<source srcset="${srcImage}" type="image/jpeg">
-												${imgTag}
-											</picture>`;
+										mime = 'image/jpeg';
 								}
+
+								line = `
+									<picture>
+										<source srcset="${newWebpUrl}" type="image/webp">
+										<source srcset="${srcImage}" type="${mime}">
+										${imgTag}
+									</picture>
+								`
 							}
 						});
 
